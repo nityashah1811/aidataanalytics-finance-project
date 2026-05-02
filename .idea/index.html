@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Financial Input Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Student Financial Information</h1>
+
+    <!-- Basic Info -->
+    <label>Age:</label>
+    <input type="number" id="age">
+
+    <label>Monthly Income ($):</label>
+    <input type="number" id="income">
+
+    <label>Financial Aid ($):</label>
+    <input type="number" id="aid">
+
+    <label>Tuition ($):</label>
+    <input type="number" id="tuition">
+
+    <!-- Monthly Expenses -->
+    <h2>Monthly Expenses</h2>
+
+    <label>Housing ($):</label>
+    <input type="number" id="housing">
+
+    <label>Food ($):</label>
+    <input type="number" id="food">
+
+    <label>Transportation ($):</label>
+    <input type="number" id="transportation">
+
+    <label>Books & Supplies ($):</label>
+    <input type="number" id="books">
+
+    <label>Entertainment ($):</label>
+    <input type="number" id="entertainment">
+
+    <label>Personal Care ($):</label>
+    <input type="number" id="personal">
+
+    <label>Technology ($):</label>
+    <input type="number" id="technology">
+
+    <label>Health & Wellness ($):</label>
+    <input type="number" id="health">
+
+    <label>Miscellaneous ($):</label>
+    <input type="number" id="misc">
+
+    <!-- Gender -->
+    <h2>Demographics</h2>
+
+    <label>Gender:</label>
+    <select id="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Non-binary">Non-binary</option>
+    </select>
+
+    <!-- Year in School -->
+    <label>Year in School:</label>
+    <select id="year">
+        <option value="Freshman">Freshman</option>
+        <option value="Sophomore">Sophomore</option>
+        <option value="Junior">Junior</option>
+        <option value="Senior">Senior</option>
+    </select>
+
+    <!-- Major -->
+    <label>Major:</label>
+    <select id="major">
+        <option value="Biology">Biology</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Economics">Economics</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Psychology">Psychology</option>
+    </select>
+
+    <!-- Payment Method -->
+    <label>Preferred Payment Method:</label>
+    <select id="payment">
+        <option value="Cash">Cash</option>
+        <option value="Credit/Debit Card">Credit/Debit Card</option>
+        <option value="Mobile Payment App">Mobile Payment App</option>
+    </select>
+
+    <button onclick="submitForm()">Submit</button>
+</div>
+
+<script>
+function submitForm() {
+    const data = {
+        age: document.getElementById("age").value,
+        income: document.getElementById("income").value,
+        aid: document.getElementById("aid").value,
+        tuition: document.getElementById("tuition").value,
+        expenses: {
+            housing: document.getElementById("housing").value,
+            food: document.getElementById("food").value,
+            transportation: document.getElementById("transportation").value,
+            books: document.getElementById("books").value,
+            entertainment: document.getElementById("entertainment").value,
+            personal: document.getElementById("personal").value,
+            technology: document.getElementById("technology").value,
+            health: document.getElementById("health").value,
+            misc: document.getElementById("misc").value
+        },
+        gender: document.getElementById("gender").value,
+        year: document.getElementById("year").value,
+        major: document.getElementById("major").value,
+        payment: document.getElementById("payment").value
+    };
+
+    console.log("Collected Data:", data);
+    alert("Form submitted! Check console for output.");
+}
+</script>
+
+</body>
+</html>
