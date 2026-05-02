@@ -1,10 +1,8 @@
 import prepare_data
 from prepare_data import load_data
 import xgboost as xgb
-from xgboost import XGBClassifier
 import pandas as pd
 import numpy as np
-from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
@@ -43,7 +41,7 @@ labels_final = kmean_final.fit_predict(clustering_scaled)
 df['cluster_labels']=labels_final
 
 #checking cluster differences
-#clusters_means = df.groupby('cluster_labels')[clustering_features].mean()
+clusters_means = df.groupby('cluster_labels')[clustering_features].mean()
 #print(clusters_means)
 
 #2 groups; 0 is better, 1 is worse
@@ -54,3 +52,21 @@ def predicting_user_cluster(user_data, scaler, model):
     user_scaled = scaler.transform([user_data])
     cluster=model.predict(user_scaled)[0] #which cluster the user belongs to
     return cluster
+
+#advice=[] #will have an array of sentences for each scenaro of overspedning for each time theyre more than 15% of the spedning costs in that catrogty for each cluster
+
+def give_advice_personal(user_data, scaler, model, cluster_means, feature_names):
+    advice = []
+    user_scaled = scaler.transform([user_data])
+    cluster = model.predict(user_scaled)[0] #which cluster the user belongs to
+    cluster_avgs = cluster_means.loc[cluster] #accessing that specific label
+
+    for i, f in enumerate(feature_names):
+        if user_data[i] >= 1.15*cluster_avgs[i]:
+            advice.append(f"You're spending more than average on {f}. Maybe try cutting back on this!")
+    if not advice:
+            advice.append("You are a moderate spender--very balanced! Keep your current spending habits, but be careful not to overspend!")
+
+    return advice
+
+
