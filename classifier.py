@@ -14,7 +14,9 @@ df= load_data()
 columns_categorical = ['gender', 'year_in_school', 'major', 'preferred_payment_method']
 for col in columns_categorical:
     df[col]=df[col].astype('category') #switching it into a pandas, classified as a category here
-df_features = df.drop(columns=['initial_classification'])
+#to prevent leakage
+col_leak = ['monthly_income', 'tuition', 'housing', 'food', 'transportation', 'books_supplies','entertainment','personal_care','technology','health_wellness','miscellaneous', 'total_monthly_spending', 'net_income']
+df_features = df.drop(columns=['initial_classification']+col_leak)
 
 le = LabelEncoder()
 classification_expert = le.fit_transform(df['initial_classification'])
@@ -30,6 +32,34 @@ X_train, X_test, Y_train, Y_test = train_test_split(df_features, classification_
 prelim_model = XGBClassifier(enable_categorical=True)
 prelim_model.fit(X_train, Y_train)
 predictions = prelim_model.predict(X_test)
+
 score = accuracy_score(predictions, Y_test)
 
+print("score")
 print(score*100)
+
+#got a score of 100%--testing to see why
+
+"""
+print("columns used to predict")
+print(df_features.columns)
+
+print("what where the acc values")
+print(df['initial_classification'].value_counts())
+
+print("check dataset")
+print(Y_train.mean(), Y_test.mean())
+"""
+
+"""
+print(
+)
+print(df.shape)
+
+print()
+print(df_features.head())
+print(df['initial_classification'].head())
+
+print()
+print(df_features.dtypes)
+"""
