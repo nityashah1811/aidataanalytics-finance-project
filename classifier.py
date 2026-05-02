@@ -1,3 +1,4 @@
+"""
 import prepare_data
 from prepare_data import load_data
 import xgboost as xgb
@@ -40,6 +41,7 @@ print(score*100)
 
 #got a score of 100%--testing to see why
 
+"""
 """
 print("columns used to predict")
 print(df_features.columns)
