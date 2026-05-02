@@ -1,6 +1,5 @@
 import prepare_data
 from prepare_data import load_data
-import xgboost as xgb
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
@@ -62,11 +61,25 @@ def give_advice_personal(user_data, scaler, model, cluster_means, feature_names)
     cluster_avgs = cluster_means.loc[cluster] #accessing that specific label
 
     for i, f in enumerate(feature_names):
-        if user_data[i] >= 1.15*cluster_avgs[i]:
+        if user_data[i] >= 1.15*cluster_avgs[f]:
             advice.append(f"You're spending more than average on {f}. Maybe try cutting back on this!")
     if not advice:
-            advice.append("You are a moderate spender--very balanced! Keep your current spending habits, but be careful not to overspend!")
+        advice.append("You are a moderate spender--very balanced! Keep your current spending habits, but be careful not to overspend!")
 
     return advice
 
+#testing
+# Test Case A — Heavy spender
+test_user_A = [2000, 800, 600, 500, 300, 400, 200, 5000, 0]
+print("\nTest User A Advice:")
+print(give_advice_personal(test_user_A, scaler, kmean_final, clusters_means, clustering_features))
 
+# Test Case B — Moderate spender
+test_user_B = [900, 200, 100, 80, 50, 60, 40, 2500, 0]
+print("\nTest User B Advice:")
+print(give_advice_personal(test_user_B, scaler, kmean_final, clusters_means, clustering_features))
+
+# Test Case C — Mixed spender
+test_user_C = [1000, 600, 150, 90, 40, 200, 50, 2800, 0]
+print("\nTest User C Advice:")
+print(give_advice_personal(test_user_C, scaler, kmean_final, clusters_means, clustering_features))
