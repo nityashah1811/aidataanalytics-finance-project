@@ -12,7 +12,7 @@ df = pd.DataFrame(data=d)
 year = ["freshman","sophomore","junior","senior"]
 major = ["Engineering","Computer Science", "Economics", "Biology", "Psychology"]
 gender = ["female","non-binary","male"]
-
+ 
 encYear = OrdinalEncoder(categories = [year])
 encMajor = OrdinalEncoder(categories = [major])
 encGender = OrdinalEncoder(categories = [gender])
