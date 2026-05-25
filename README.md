@@ -1,4 +1,12 @@
-# aidataanalytics-finance-project
+# Financial Advice for Students
+
+Our team:
+ - Sukriti S. (Team Lead)
+ - Advaith S. (Secretary)
+ - Nitya S. (Internal Communications Officer)
+ - Nita S.
+ - Yusuf A.
+ - Rishik D.
 
 We decided to develop a financial advice model for college students. It takes in the following factors: age, credit score, gender, year in school, major, monthly income, financial aid, tuition, cost of living, current savings and debt, and preferred payment method. It outputs a financial stability score between 0 and 100, a monthly savings recommendation, and other financial advice.
 
@@ -11,3 +19,7 @@ With our dataset ready, we started coding our model. To ensure we chose an accur
 With our model chosen, we proceeded to work on how users can actually interact with this model: using a website. Our back-end uses the K-Means Cluster Random Forest Model, and outputs financial advice, a financial stability score from 0 to 100, and monthly savings recommendation. This included using Pandas and Numpy, and Scikit-Learn, for our ML model, and Java for our core back-end programming. Our front-end of the website is mainly coded in HTML, and allows users to use textboxes and drop-down menus to enter their data and receive financial advice back.
 
 Some of our future goals include integrating a different dataset into this model, one that’s more bird’s-eye-view but includes real data, and including Natural Language Processing (NLP) into our website. With NLP, the user can specify which categories they want to prioritize, and can receive more personalized feedback accordingly.
+
+# Demonstration
+
+Here is the link to our presentation: 
