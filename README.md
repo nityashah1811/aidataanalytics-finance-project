@@ -9,6 +9,7 @@ Our team:
  - Rishik D.
 
 Our Project:
+
 We decided to develop a financial advice model for college students. It takes in the following factors: age, credit score, gender, year in school, major, monthly income, financial aid, tuition, cost of living, current savings and debt, and preferred payment method. It outputs a financial stability score between 0 and 100, a monthly savings recommendation, and other financial advice.
 
 The first step in our process was getting familiar with many Python libraries used in ML. This included learning numpy, pandas, scikit, matplotlib, and pytorch. All of us looked through it, to ensure we all had the same base understanding getting started with our project. We did not end up using some of them in our project, such as matplotlib, but it was useful in familiarizing ourselves with the general ecosystem of ML libraries.
